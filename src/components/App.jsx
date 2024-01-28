@@ -19,18 +19,12 @@ export const App = () => {
   );
   const [filter, setFilter] = useState('');
 
-  const isFirstRender = useRef(true);
 
   const filteredContacts = contacts.filter(({ name }) =>
     name.toLowerCase().includes(filter.toLowerCase())
   );
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-
     localStorage.setItem(LS_KEY, JSON.stringify(contacts));
   }, [contacts]);
 
